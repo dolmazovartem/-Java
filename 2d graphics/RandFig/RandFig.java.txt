@@ -1,0 +1,9 @@
+﻿import GrPaintLibrary.GrPaintLibrary;
+
+
+public class RandomizePaintFrame {
+
+    public static void main(String[] args) {
+        new GrPaintLibrary();
+    }
+}

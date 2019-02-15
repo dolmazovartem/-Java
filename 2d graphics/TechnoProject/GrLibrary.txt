@@ -1,0 +1,180 @@
+﻿package GrLibrary;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class GrLibrary extends Frame implements WindowListener {
+
+    public void windowOpened(WindowEvent e) {};
+
+    public void windowClosing(WindowEvent e) {
+        dispose();
+        System.exit(0);
+    };
+
+    public void windowClosed(WindowEvent e) {};
+    public void windowIconified(WindowEvent e) {};
+    public void windowDeiconified(WindowEvent e) {};
+    public void windowActivated(WindowEvent e) {};
+    public void windowDeactivated(WindowEvent e) {};
+
+    public void paint(Graphics g) {
+
+        Dimension rc = getSize();
+        Insets in = getInsets();
+
+        int RH = rc.width;
+        int RW = rc.height;
+
+        int minX = in.left;
+        int maxX = RH - in.right;
+        int minY = in.top;
+        int maxY = RW - in.bottom;
+        int x1, y1, x2, y2;
+        int cr,cq,cb;
+        int d;
+        int cx, cy, dx, dy;
+        float wdk=3.0f;
+
+        cx = Math.abs(maxX - minX) / 2;
+        cy = Math.abs(maxY - minY) / 2;
+        dx = maxX / 10;
+        dy = maxY / 10;
+
+        g.setColor(new Color(0x8F46C8));
+        String txt = "Програмування графічними примітивами: ";
+        g.setFont(new Font("Trebuchet Ms", Font.PLAIN, 24));
+        int nf = g.getFontMetrics().stringWidth(txt);
+        g.drawString(txt, nf / 2 - 220, nf / 2 - 180);
+
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(wdk));
+
+
+        // TO DO
+
+        //Я сохранил четкие соотношения между фигурами, как и сказано в условии. Задача выполнена 1:1
+
+        wdk=1.5f;
+        g2.setStroke(new BasicStroke(wdk));
+        g.setColor(new Color(0x000000));
+
+        x1=1/2;
+        x2=3/4;
+        y1=1/4;
+
+        g.drawOval(230,200,200,200);
+        g.drawOval(313+x1,283+x1,33,33);
+
+
+        g.drawLine(309+x1, 258+x1, 309+x1, 283+x1);
+        g.drawLine(309+x1, 316+x1, 309+x1, 341+x1);
+        g.drawLine(330,283+x1,330,316+x1);
+
+
+        //Штриховка. я бы мог нарисовать штрихи циком фор на всю планшетку и потом повторно наложить еще одну доску с исключением на круг, но не знаю как это сделать
+        g.drawLine(233, 320, 323, 400); //нижняя линия-штрих
+        g.drawLine(231, 300, 343, 398);
+        g.drawLine(232, 280, 363, 395);
+        g.drawLine(238, 263, 378, 388);
+        g.drawLine(245, 247, 391, 377);
+        g.drawLine(256, 236, 402, 367);
+        g.drawLine(266, 224, 411, 357);
+        g.drawLine(279, 215, 419, 344);
+        g.drawLine(294, 207, 426, 329);
+        g.drawLine(310, 202, 429, 313);
+        g.drawLine(330, 201, 430, 294);
+        g.drawLine(351, 203, 425, 272); //верхняя линия штрих
+
+
+        g.setColor(new Color(0xFFFFFF)); //исправление побочных эффектов штрихоки
+        g.fillOval(314+x2,284+x2,31,31); //Так как у меня не получается объяснить джаве что мне нужны координаты в стиле 12,5, я перестал уточнять х1, х2, у1
+        g.fillRect(351+x2, 259+x2, 14, 80);
+        g.drawLine(366+x1, 260, 366+x1, 281);
+        g.drawLine(366+x1, 318, 366+x1, 339);
+        g.drawLine(272, 314, 299, 338);
+        g.drawLine(272, 315, 298, 338);
+        g.drawLine(272, 316, 298, 338);
+        g.drawLine(270, 292, 307, 325);
+        g.drawLine(270, 290, 307, 324);
+        g.drawLine(270, 291, 307, 325);
+        g.drawLine(277, 275, 294, 290);
+        g.drawLine(276, 276, 293, 291);
+        g.drawLine(289, 264, 307, 281);
+        g.drawLine(289, 265, 306, 281);
+        g.drawLine(289, 266, 305, 281);
+        g.drawLine(305, 260, 307, 262);
+        g.drawLine(304, 259, 307, 262);
+        g.drawLine(367, 335, 371, 339);
+        g.drawLine(367, 317, 387, 335);
+        g.drawLine(368, 317, 388, 334);
+        //g.drawLine(367, 297, 398, 325);
+        //g.drawLine(367, 295, 398, 325);
+        //g.drawLine(367, 297, 399, 325);
+        g.drawLine(367, 276, 407, 312);
+        g.drawLine(367, 274, 407, 311);
+        g.drawLine(372, 261, 409, 294);
+        g.drawLine(373, 260, 409, 293);
+
+
+        g.setColor(new Color(0x000000));
+        g.drawArc(267+x1,258+x1,83,83,90,180);
+        g.drawArc(292+x1,283+x1,33,33,90,180);
+
+        g.drawArc(352+x1,283+x1,33,33,270,180);
+
+        g.drawRect(350+y1, 258+x1, 16+x1, 83);
+        g.setColor(new Color(0xFFFFFF));
+        g.drawLine(366, 260, 366, 282);
+        g.drawLine(368, 260, 368, 282);
+        g.drawLine(366, 318, 366, 339);
+
+        g.setColor(new Color(0x000000));
+        g.drawArc(327+x1,258+x1,83,83,270,180);
+
+        g.fillPolygon(new int[] {365,375,375}, new int[] {413,409,417},3);
+        g.fillPolygon(new int[] {349,339,339}, new int[] {413,409,417},3);
+        g.fillPolygon(new int[] {329,326,334}, new int[] {316,306,306},3);
+        g.fillPolygon(new int[] {329,326,334}, new int[] {284,294,294},3);
+        g.fillPolygon(new int[] {443,439,447}, new int[] {258,248,248},3);
+        g.fillPolygon(new int[] {443,439,447}, new int[] {283,293,293},3);
+        g.fillPolygon(new int[] {230,240,240}, new int[] {185,181,189},3);
+        g.fillPolygon(new int[] {430,420,420}, new int[] {185,181,189},3);
+
+        wdk=1.0f;
+        g2.setStroke(new BasicStroke(wdk));
+        g.drawLine(230,170,230,290);
+        g.drawLine(430,170,430,290);
+        g.drawLine(230,185,430,185);
+
+        g.drawLine(349,283+x1,349,420);
+        g.drawLine(365,288,365,420);
+        g.drawLine(335,413,378,413);
+
+        g.drawLine(366,258,450,258);
+        g.drawLine(366,283+x1,450,283+x1);
+        g.drawLine(443,245,443,296);
+
+        g.drawLine(329+x1,283+x1,329+x1,316+x1);
+
+        g.setFont(new Font("Trebuchet Ms", Font.BOLD, 16));
+        g.drawString(", де",500,200);
+        g.drawString("a=12;",500,225);
+        g.drawString("b=1.5;",500,245);
+        g.drawString("c=1;",500,265);
+        g.drawString("d=2",500,285);
+        g.drawString("a",330,180);
+        g.drawString("d",337,326);
+        g.drawString("b",452,299);
+        g.drawString("c",371,406);
+    }
+
+    public GrLibrary() {
+        super("Графічні примітиви.");
+        addWindowListener(this);
+        setLayout(null);
+        setLocation(120,100);
+        setSize(660,600);
+        show();
+    }
+}
